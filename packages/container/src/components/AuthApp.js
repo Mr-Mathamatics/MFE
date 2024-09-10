@@ -1,9 +1,10 @@
 import React from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
-import { mount } from "marketing/MarketingApp";
+import { mount } from "auth/AuthApp";
 import { useHistory } from "react-router-dom";
-function MarketingApp() {
+
+function AuthApp({ onSignIn }) {
   const ref = useRef(null);
   const history = useHistory();
 
@@ -16,12 +17,13 @@ function MarketingApp() {
           history.push(naxtPathname);
         }
       },
+      onSignIn
     });
 
-    history.listen(onParantNavigate)
+    history.listen(onParantNavigate);
   }, []);
 
   return <div ref={ref} />;
 }
 
-export default MarketingApp;
+export default AuthApp;
